@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 manager.registerListener(MainActivity.this, manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), 0);
                 manager.registerListener(MainActivity.this, manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED), 0);
                 manager.registerListener(MainActivity.this, manager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), 0);
+                manager.registerListener(MainActivity.this, manager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR), 0);
 
                 isRunning = true;
                 return true;
@@ -119,6 +120,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         break;
                     case Sensor.TYPE_ROTATION_VECTOR:
                         writer.write(String.format("%d; ROT; %f; %f; %f; %f; %f; %f\n", evt.timestamp, evt.values[0], evt.values[1], evt.values[2], evt.values[3], 0.f, 0.f));
+                        break;
+                    case Sensor.TYPE_GAME_ROTATION_VECTOR:
+                        writer.write(String.format("%d; GAME_ROT; %f; %f; %f; %f; %f; %f\n", evt.timestamp, evt.values[0], evt.values[1], evt.values[2], evt.values[3], 0.f, 0.f));
                         break;
                 }
             } catch (IOException e) {
