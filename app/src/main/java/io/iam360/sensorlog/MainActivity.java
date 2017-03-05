@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 Log.d(TAG, "Writing to " + getStorageDir());
                 try {
-                    writer = new FileWriter(new File(getStorageDir(), "sensors.csv"));
+                    writer = new FileWriter(new File(getStorageDir(), "sensors_" + System.currentTimeMillis() + ".csv"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
